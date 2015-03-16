@@ -4,6 +4,7 @@ love.window.setMode(400, 400, {})
 
 
 function love.load()
+    source = love.audio.newSource("media/blockhit.ogg", static)
     score_t = 0
     score = 0
     tmax = 5
@@ -84,7 +85,7 @@ function love.update(dt)
     end
 
     if snake[1].x==food.pos.x*10 and snake[1].y==food.pos.y*10 then
-        -- love.audio.play("E:/github/snake_forLove2D/snake/media/click.ogg")
+        love.audio.play(source)
         score = score + 1
         score_t = score_t + 1
         if score_t==10 then
