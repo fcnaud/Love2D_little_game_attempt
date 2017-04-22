@@ -10,49 +10,49 @@ function love.load()
     line.direction = {[0]='UP', [1]='LEFT', [2]='DOWN', [3]='RIGHT'}
     line.dirInd = 0
 
-    dlength = 10
+    dlength = 3
 end
 
 
 function love.update(dt)
-
+    if love.keyboard.isDown('up') then
+        local dir = line.direction[line.dirInd]
+        if dir=='UP' then
+            line.midy = line.midy - dlength
+        end
+        if dir=='DOWN' then
+            line.midy = line.midy + dlength
+        end
+        if dir=='LEFT' then
+            line.midx = line.midx - dlength
+        end
+        if dir=='RIGHT' then
+            line.midx = line.midx + dlength
+        end
+    elseif love.keyboard.isDown('down') then
+        local dir = line.direction[line.dirInd]
+        if dir=='UP' then
+            line.midy = line.midy + dlength
+        end
+        if dir=='DOWN' then
+            line.midy = line.midy - dlength
+        end
+        if dir=='LEFT' then
+            line.midx = line.midx + dlength
+        end
+        if dir=='RIGHT' then
+            line.midx = line.midx - dlength
+        end
+    elseif love.keyboard.isDown('left') then
+        line.dirInd = (line.dirInd + 1) % 4
+    elseif love.keyboard.isDown('right') then
+        line.dirInd = (line.dirInd - 1) % 4
+    end
 end
 
 
 function love.keypressed(k)
-    if k=='up' then
-        local dir = line.direction[line.dirInd]
-        if dir=='UP' then
-            line.midy = line.midy - dlength
-        end
-        if dir=='DOWN' then
-            line.midy = line.midy + dlength
-        end
-        if dir=='LEFT' then
-            line.midx = line.midx - dlength
-        end
-        if dir=='RIGHT' then
-            line.midx = line.midx + dlength
-        end
-    elseif k=='down' then
-        local dir = line.direction[line.dirInd]
-        if dir=='UP' then
-            line.midy = line.midy + dlength
-        end
-        if dir=='DOWN' then
-            line.midy = line.midy - dlength
-        end
-        if dir=='LEFT' then
-            line.midx = line.midx + dlength
-        end
-        if dir=='RIGHT' then
-            line.midx = line.midx - dlength
-        end
-    elseif k=='left' then
-        line.dirInd = (line.dirInd + 1) % 4
-    elseif k=='right' then
-        line.dirInd = (line.dirInd - 1) % 4
-    end
+
 end
 
 function love.draw()

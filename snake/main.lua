@@ -1,5 +1,5 @@
 love.window.setTitle("贪吃蛇")
-love.window.setMode(400, 400, {})
+love.window.setMode(200, 200, {})
 
 
 
