@@ -20,18 +20,6 @@ function love.load()
 end
 
 function love.update()
-    --[[
-    mousePos.x = love.mouse.getX()
-    mousePos.y = love.mouse.getY()
-    if mousePos.x<0 or
-       mousePos.x>width or
-       mousePos.y<0 or
-       mousePos.y>height then
-       
-       mousePos.x = width/2
-       mousePos.y = height/2
-    end
-    ]]
     for i=#bullets,1,-1 do
         local bullet = bullets[i]
         bullet.x = bullet.x + bullet.xv
